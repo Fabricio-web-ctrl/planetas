@@ -1,0 +1,134 @@
+/* css basico feito com chat gpt */
+
+/* Configuração Geral e Fundo de Galáxia */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    /* Fundo com gradiente espacial */
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Título Espacial */
+h1 {
+    font-size: 3rem;
+    margin-top: 50px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 20px #fff, 0 0 30px #7b2ff7;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Container dos Botões */
+.planets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* O Efeito "Glitter" dos Botões */
+button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 15px 25px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden; /* Importante para o glitter */
+}
+
+/* Camada de Brilho (Glitter Animado) ao passar o mouse */
+button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 10%);
+    background-size: 20px 20px; /* Tamanho dos pontos de glitter */
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: rgba(123, 47, 247, 0.4);
+    box-shadow: 0 0 20px rgba(123, 47, 247, 0.8);
+    border-color: #fff;
+}
+
+button:hover::before {
+    opacity: 1;
+    animation: glitterMove 2s linear infinite;
+}
+
+/* Painel de Informações */
+#informacoes {
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    border: 1px dashed #7b2ff7;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+#nome {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #a29bfe;
+    margin-bottom: 10px;
+}
+
+#tamanho, #temperatura, #gravidade {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #dfe6e9;
+}
+
+/* --- ANIMAÇÕES --- */
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7b2ff7; }
+    to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6; }
+}
+
+@keyframes glitterMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-20px, -20px); }
+}
+
+/* Adicionando "Estrelas" no fundo via CSS */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    opacity: 0.5;
+}

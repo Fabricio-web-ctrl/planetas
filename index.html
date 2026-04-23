@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+      <h1>Catálogo de Planetas</h1>
+
+    <div class="planets">
+        <button onclick="mostrarInformacoes('mercurio')">Mercúrio</button>
+        <button onclick="mostrarInformacoes('venus')">Vênus</button>
+        <button onclick="mostrarInformacoes('terra')">Terra</button>
+        <button onclick="mostrarInformacoes('marte')">Marte</button>
+        <button onclick="mostrarInformacoes('jupiter')">Júpiter</button>
+        <button onclick="mostrarInformacoes('saturno')">Saturno</button>
+        <button onclick="mostrarInformacoes('urano')">Urano</button>
+        <button onclick="mostrarInformacoes('netuno')">Netuno</button>
+    </div>
+
+    <div id="informacoes">
+        <p id="nome">Escolha um planeta</p>
+        <p id="tamanho"></p>
+        <p id="temperatura"></p>
+        <p id="gravidade"></p>
+    </div>
+
 
     <script src="js]/script.js"></script>
 </body>
