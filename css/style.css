@@ -1,134 +1,498 @@
 /* css basico feito com chat gpt */
 
 /* Configuração Geral e Fundo de Galáxia */
-body {
+/* Reset e Base */
+/* Importando uma fonte futurista */
+/* Importando uma fonte futurista e limpa */
+/* Importando fonte elegante e espacial */
+/* Importando fonte elegante e espacial */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    text-align: center;
-    /* Fundo com gradiente espacial */
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background: radial-gradient(ellipse at center, #0a0a2a 0%, #020210 100%);
+    font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+    position: relative;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Título Espacial */
-h1 {
-    font-size: 3rem;
-    margin-top: 50px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 0 0 20px #fff, 0 0 30px #7b2ff7;
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* Container dos Botões */
-.planets {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
-    max-width: 800px;
-    margin: 30px auto;
     padding: 20px;
 }
 
-/* O Efeito "Glitter" dos Botões */
-button {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 15px 25px;
-    font-size: 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    position: relative;
-    overflow: hidden; /* Importante para o glitter */
+/* Efeito de estrelas cintilantes */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 150px 280px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 250px 450px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 450px 120px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 550px 620px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 750px 380px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 850px 520px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 1020px 180px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 1180px 700px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 1350px 250px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 820px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 340px 920px, #fff, rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 670px 1080px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 980px 980px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 1250px 850px, #fff, rgba(0,0,0,0));
+    background-repeat: no-repeat;
+    background-size: 200px 200px;
+    animation: starsTwinkle 3s infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* Camada de Brilho (Glitter Animado) ao passar o mouse */
-button::before {
+@keyframes starsTwinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Nebulosa giratória */
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(138,43,226,0.15) 0%, rgba(75,0,130,0.08) 50%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: nebulaRotate 40s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(30px);
+}
+
+@keyframes nebulaRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    background: linear-gradient(135deg, #ffd700, #ff69b4, #00ffff, #ffd700);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 30px rgba(255,215,0,0.5);
+    animation: titleShine 3s ease infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes titleShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Container dos botões */
+.planets {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo dos botões com glitter */
+.planets button {
+    background: linear-gradient(135deg, rgba(30,20,60,0.9), rgba(20,10,40,0.9));
+    border: 2px solid transparent;
+    background-image: linear-gradient(135deg, rgba(30,20,60,0.9), rgba(20,10,40,0.9)), linear-gradient(45deg, #ffd700, #ff69b4, #00ffff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+}
+
+/* Efeito glitter nos botões */
+.planets button::before {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 10%);
-    background-size: 20px 20px; /* Tamanho dos pontos de glitter */
-    opacity: 0;
-    transition: opacity 0.3s;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255,215,0,0.4) 50%, 
+        transparent 70%);
+    transform: rotate(45deg);
+    animation: glitter 3s infinite;
     pointer-events: none;
 }
 
-button:hover {
-    transform: scale(1.1);
-    background: rgba(123, 47, 247, 0.4);
-    box-shadow: 0 0 20px rgba(123, 47, 247, 0.8);
-    border-color: #fff;
+@keyframes glitter {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
-button:hover::before {
-    opacity: 1;
-    animation: glitterMove 2s linear infinite;
+/* Partículas de glitter nos botões ao passar o mouse */
+.planets button:hover::after {
+    content: '✨';
+    position: absolute;
+    font-size: 20px;
+    animation: floatGlitter 0.5s ease-out;
+    pointer-events: none;
 }
 
-/* Painel de Informações */
+@keyframes floatGlitter {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x, 20px), var(--y, -30px)) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+.planets button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 40px rgba(255,215,0,0.6), 0 0 60px rgba(255,105,180,0.4);
+}
+
+/* Container de informações */
 #informacoes {
-    margin-top: 40px;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, rgba(20,15,40,0.85), rgba(10,5,25,0.95));
+    backdrop-filter: blur(20px);
     border-radius: 20px;
-    border: 1px dashed #7b2ff7;
-    width: 80%;
+    padding: 30px;
     max-width: 500px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255,215,0,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.2);
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.2); }
+    50% { box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 50px rgba(255,215,0,0.5), 0 0 70px rgba(255,105,180,0.3); }
+}
+
+/* Estilo dos parágrafos */
+#informacoes p {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    position: relative;
 }
 
 #nome {
     font-size: 2rem;
     font-weight: bold;
-    color: #a29bfe;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #ffd700, #ff69b4, #00ffff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: nameGradient 3s ease infinite;
+}
+
+@keyframes nameGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 #tamanho, #temperatura, #gravidade {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #dfe6e9;
+    color: #e0e0ff;
+    border-left: 3px solid #ffd700;
+    padding-left: 15px;
+    transition: all 0.3s ease;
 }
 
-/* --- ANIMAÇÕES --- */
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7b2ff7; }
-    to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6; }
+#tamanho:hover, #temperatura:hover, #gravidade:hover {
+    transform: translateX(10px);
+    border-left-color: #ff69b4;
+    text-shadow: 0 0 10px rgba(255,215,0,0.5);
 }
 
-@keyframes glitterMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-20px, -20px); }
+/* Efeito de brilho nas palavras */
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 5px rgba(255,215,0,0.3); }
+    50% { text-shadow: 0 0 15px rgba(255,215,0,0.8), 0 0 5px rgba(255,105,180,0.5); }
 }
 
-/* Adicionando "Estrelas" no fundo via CSS */
-body::after {
-    content: "";
+#tamanho, #temperatura, #gravidade {
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+/* Estrelas cadentes */
+.shooting-star {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    box-shadow: 0 0 10px white, 0 0 20px rgba(255,215,0,0.5);
+    animation: shootingStar 3s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translateX(-100px) translateY(-100px) rotate(45deg);
+        opacity: 1;
+        width: 2px;
+    }
+    50% {
+        width: 50px;
+    }
+    100% {
+        transform: translateX(100vw) translateY(100vh) rotate(45deg);
+        opacity: 0;
+        width: 2px;
+    }
+}
+
+/* Estrelinhas decorativas adicionais */
+.star-decoration {
+    position: fixed;
+    font-size: 8px;
+    pointer-events: none;
+    animation: twinkle 2s infinite;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .planets button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    #informacoes {
+        margin: 0 15px;
+        padding: 20px;
+    }
+    
+    #nome {
+        font-size: 1.5rem;
+    }
+    
+    #informacoes p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .planets {
+        gap: 10px;
+    }
+    
+    .planets button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    #informacoes {
+        padding: 15px;
+    }
+    
+    #nome {
+        font-size: 1.2rem;
+    }
+}
+
+/* Scrollbar estilizada com glitter */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a2a;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ffd700, #ff69b4);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #ff69b4, #ffd700);
+}
+
+/* Efeito de loading glow */
+@keyframes loadingGlow {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Seleção de texto estilizada */
+::selection {
+    background: linear-gradient(135deg, #ffd700, #ff69b4);
+    color: #0a0a2a;
+}
+
+::-moz-selection {
+    background: linear-gradient(135deg, #ffd700, #ff69b4);
+    color: #0a0a2a;
+}
+
+/* Container da imagem */
+#imagems {
+    text-align: center;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efeito de anel brilhante ao redor */
+#imagems::before {
+    content: '';
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #ffd700, #ff69b4, #00ffff, #ffd700);
+    animation: rotateGlow 3s linear infinite;
     z-index: -1;
-    background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-    opacity: 0.5;
+}
+
+/* Estilo principal da imagem */
+#imagem {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    background: #1a0a2a;
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 105, 180, 0.4),
+        inset 0 0 20px rgba(255, 215, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+/* Efeito hover */
+#imagem:hover {
+    transform: scale(1.07);
+    box-shadow: 
+        0 0 50px rgba(255, 215, 0, 0.9),
+        0 0 90px rgba(255, 105, 180, 0.6),
+        inset 0 0 30px rgba(255, 215, 0, 0.3);
+    border-color: #ffd700;
+}
+
+/* Efeito de glitter animado */
+@keyframes sparkle {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 2px gold);
+    }
+    25% {
+        filter: brightness(1.1) drop-shadow(0 0 10px #ff69b4);
+    }
+    50% {
+        filter: brightness(1.05) drop-shadow(0 0 15px #00ffff);
+    }
+    75% {
+        filter: brightness(1.1) drop-shadow(0 0 10px #ffd700);
+    }
+}
+
+#imagem {
+    animation: float 3s ease-in-out infinite, sparkle 2s ease-in-out infinite;
+}
+
+
+
+/* Animação de rotação do anel */
+@keyframes rotateGlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Efeito de partículas de glitter ao passar o mouse */
+#imagems:hover #imagem {
+    animation: float 3s ease-in-out infinite, sparkle 0.5s ease-in-out infinite;
+}
+
+/* Estilo para imagem sem src ou com erro */
+#imagem[src=""], 
+#imagem:not([src]) {
+    opacity: 0.6;
+    background: linear-gradient(135deg, #2a1a3a, #1a0a2a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #imagem {
+        width: 160px;
+        height: 160px;
+    }
+    
+    #imagems::before {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    #imagem {
+        width: 120px;
+        height: 120px;
+    }
+    
+    #imagems::before {
+        width: 140px;
+        height: 140px;
+    }
 }
